@@ -1,5 +1,16 @@
-from src.log_mod import configure_logging
+import discord
+from src.bot import MyClient
+from src.utils import fetch_token
 
-logging = configure_logging()
+def main():
+    intents = discord.Intents.default()
+    intents.message_content = True
 
-logging.info('So Test this')
+    client = MyClient(intents=intents)
+
+    token = fetch_token()
+    client.run(token=token)
+
+
+if __name__ == "__main__":
+    main()
